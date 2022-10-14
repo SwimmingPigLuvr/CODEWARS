@@ -1,3 +1,11 @@
+// TODO: add another go to see if there are multiple digits
+// might want to loop it
+// keep adding digits together
+// break if 1 digit
+
+
+
+
 fn split(num: i64) -> i64 {
     let digits: Vec<_> = num.to_string().chars().map(|d| d.to_digit(10).unwrap() as i64).collect();
     // add digits
@@ -19,15 +27,16 @@ fn split(num: i64) -> i64 {
     }
     
     
-        // add together
-        // make sure the result is 1 digit long
+        
     }
 
 
 fn main() {
     let num = 10;
     let another = 999999999;
+    let yet_another = 493193;
     let a = split(num);
     let b = split(another);
-    println!("{}\n{}", a, b)
+    let c = split(yet_another);
+    println!("{}\n{}\n{}", a, b, c)
 }
