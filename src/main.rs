@@ -5,30 +5,48 @@
 
 
 
+// since im refactoring this to a loop i probably 
+// dont need to call digits two or sum two
+
+//logic loop 
+// num to string chars (map to digit unwrap) collect
+// add digits together
+// sum to string chars map digit etc...
+// match len
+
+// how do i pass the new vlaue into this loop?
+
+
 
 fn split(num: i64) -> i64 {
-    let digits: Vec<_> = num.to_string().chars().map(|d| d.to_digit(10).unwrap() as i64).collect();
-    // add digits
-    let mut sum: i64 = 0;
-    for d in digits {
-        sum += d
-    }
-    // if there are still two digits then we stringify them and add them together again
-    let digits_two: Vec<_> = sum.to_string().chars().map(|d| d.to_digit(10).unwrap() as i64).collect();
-    match digits_two.len() {
-        x if x > 1 => {
-            let mut sum_two = 0;
-            for d in digits_two {
-                sum_two += d
+    
+    loop {
+        let mut sum: i64 = num;
+        // split to digits, stringify it, iter by chars, map to digits, collect as vec
+        let digits: Vec<i64> = sum.to_string().chars().map(|d| d.to_digit(10).unwrap() as i64).collect();
+
+        // add digits
+        sum = digits.iter().sum();
+
+        let sum_digits: Vec<i64> = sum.to_string().chars().map(|d| d.to_digit(10).unwrap() as i64).collect();
+        sum = sum_digits.iter().sum();
+
+        match sum_digits.len() {
+            2.. => {
+                continue;
             }
-            sum_two
+            _ => {
+                return sum;
+            }
         }
-        _ => {sum}
+        sum;
     }
+    
     
     
         
-    }
+    
+}
 
 
 fn main() {
@@ -38,5 +56,5 @@ fn main() {
     let a = split(num);
     let b = split(another);
     let c = split(yet_another);
-    println!("{}\n{}\n{}", a, b, c)
+    println!("the numbers are \n{}\n{}\n{}", a, b, c)
 }
