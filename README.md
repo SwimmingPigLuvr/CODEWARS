@@ -1,5 +1,5 @@
 # codewars-Sum-of-Digits-Digital-Roots
-CODEWARS
+
 
 Digital root is the recursive sum of all the digits in a number.
 
