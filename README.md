@@ -10,5 +10,7 @@ The input will be a non-negative integer
 
  
 420 --> 4 + 2 + 0 = 6
+
 911 --> 9 + 1 + 1 = 11 --> 2
+
  69 --> 6 + 9 = 15 --> 1 + 5 = 6
