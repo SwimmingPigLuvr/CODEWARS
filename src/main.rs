@@ -1,23 +1,14 @@
-// TODO: add another go to see if there are multiple digits
-// might want to loop it
-// keep adding digits together
-// break if 1 digit
+fn digital_root(num: i64) -> i64 {
 
-// since im refactoring this to a loop i probably
-// dont need to call digits two or sum two
-
-//logic loop
-// num to string chars (map to digit unwrap) collect
-// add digits together
-// sum to string chars map digit etc...
-// match len
-
-// how do i pass the new vlaue into this loop?
-
-fn split(num: i64) -> i64 {
+    // hold our num as sum
     let mut sum: i64 = num;
     loop {
-        // split to digits, stringify it, iter by chars, map to digits, collect as vec
+        // create vec to hold digits
+        // i64 to string
+        // iterate by chars
+        // map each char to digit (base 10 number)
+        // unwrap as i64
+        // collect into vector
         let digits: Vec<i64> = sum
             .to_string()
             .chars()
@@ -27,17 +18,24 @@ fn split(num: i64) -> i64 {
         // add digits
         sum = digits.iter().sum();
 
+        // repeat process of splitting the digits for the sum
         let sum_digits: Vec<i64> = sum
             .to_string()
             .chars()
             .map(|d| d.to_digit(10).unwrap() as i64)
             .collect();
+
+        // add sum digits
         sum = sum_digits.iter().sum();
-        // return sum;
+
+
+        // match number of digits
         match sum_digits.len() {
+        // if there are more than 1 digits => the loop repeats
             2.. => {
                 continue;
             }
+        // if there is only one digit => we return sum
             _ => {
                 return sum;
             }
@@ -48,11 +46,11 @@ fn split(num: i64) -> i64 {
 
 
 fn main() {
-    let num = 10;
-    let another = 999999999;
-    let yet_another = 493193;
-    let a = split(num);
-    let b = split(another);
-    let c = split(yet_another);
-    println!("the numbers are \n{}\n{}\n{}", a, b, c)
+    let one = 22;
+    let two = 493192;
+    let three = 999999999;
+    let a = digital_root(one);
+    let b = digital_root(two);
+    let c = digital_root(three);
+    println!("the numbers are {}{}{}", a, b, c)
 }
