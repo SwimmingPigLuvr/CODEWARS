@@ -3,12 +3,10 @@
 // keep adding digits together
 // break if 1 digit
 
-
-
-// since im refactoring this to a loop i probably 
+// since im refactoring this to a loop i probably
 // dont need to call digits two or sum two
 
-//logic loop 
+//logic loop
 // num to string chars (map to digit unwrap) collect
 // add digits together
 // sum to string chars map digit etc...
@@ -16,21 +14,26 @@
 
 // how do i pass the new vlaue into this loop?
 
-
-
 fn split(num: i64) -> i64 {
-    
+    let mut sum: i64 = num;
     loop {
-        let mut sum: i64 = num;
         // split to digits, stringify it, iter by chars, map to digits, collect as vec
-        let digits: Vec<i64> = sum.to_string().chars().map(|d| d.to_digit(10).unwrap() as i64).collect();
+        let digits: Vec<i64> = sum
+            .to_string()
+            .chars()
+            .map(|d| d.to_digit(10).unwrap() as i64)
+            .collect();
 
         // add digits
         sum = digits.iter().sum();
 
-        let sum_digits: Vec<i64> = sum.to_string().chars().map(|d| d.to_digit(10).unwrap() as i64).collect();
+        let sum_digits: Vec<i64> = sum
+            .to_string()
+            .chars()
+            .map(|d| d.to_digit(10).unwrap() as i64)
+            .collect();
         sum = sum_digits.iter().sum();
-
+        // return sum;
         match sum_digits.len() {
             2.. => {
                 continue;
@@ -39,14 +42,9 @@ fn split(num: i64) -> i64 {
                 return sum;
             }
         }
-        sum;
     }
-    
-    
-    
-        
-    
 }
+
 
 
 fn main() {
